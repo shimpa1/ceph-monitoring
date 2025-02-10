@@ -1,0 +1,16 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  monitoring:
+    enabled: true
+    metricsDisabled: false  # Just in case
+  dashboard:
+    prometheusEndpoint: <IP:port>  # The IP address and port wher the metrics will be available at example http://10.4.8.91:30900
+    prometheusEndpointSSLVerify: false
+  mgr:
+    modules:
+      - name: prometheus
+        enabled: true
