@@ -1,0 +1,15 @@
+grafana:
+  enabled: false  # or true if you want grafana to also be installed
+
+prometheusOperator:
+  createCustomResource: true
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector:
+      matchLabels:
+        team: rook
+    serviceMonitorNamespaceSelector:
+      matchLabels:
+        monitoring: enabled
